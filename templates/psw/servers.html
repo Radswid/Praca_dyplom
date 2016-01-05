@@ -1,0 +1,32 @@
+{% extends 'psw/base.html' %}
+
+{% block title %}Lista serwerów{% endblock %}
+
+{% block body_block %} 
+
+<form action="/psw/servers/" method="post">
+	{% csrf_token %}
+	{{ form.non_field_errors }}
+<div class="fieldWrapper">
+    {{ form.ip.errors }}
+    <label for="{{ form.ip.id_for_label }}">Email subject:</label>
+    {{ form.ip }}
+</div>
+<div class="fieldWrapper">
+    {{ form.system.errors }}
+    <label for="{{ form.system.id_for_label }}">Your message:</label>
+    {{ form.system }}
+</div>
+<div class="fieldWrapper">
+    {{ form.ram.errors }}
+    <label for="{{ form.ram.id_for_label }}">Your email address:</label>
+    {{ form.ram }}
+</div>
+<div class="fieldWrapper">
+    {{ form.quote.errors }}
+    <label for="{{ form.quote.id_for_label }}">CC yourself?</label>
+    {{ form.quote }}
+</div>
+<input type="submit" value="Zatwierdź" />
+</form>
+{% endblock %}

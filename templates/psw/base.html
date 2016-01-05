@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PSW - {%block title %}{% endblock %}</title>
+</head>
+
+<body>
+<nav>
+	{% block nav_block %}
+	<ul>
+		<li><a href="/psw/">Index</a></li>
+		<li><a href="/psw/servers/">Serwery</a></li>
+	</ul>
+	{% endblock %}
+</nav>	
+<article>	
+	{% block body_block %}
+	{% endblock %}
+</article>
+<footer>Stworzone przez:************</footer>
+</body>
+</html>
