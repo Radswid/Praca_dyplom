@@ -13,6 +13,8 @@ try:
     for row in rows:
         
         print ("%s %s %s %s %s" % (row['id'], row['ip'], row['system'], row['ram'],row['quote']))
+        cursor.execute('UPDATE psw_commands SET wykonana = True')
+        con.commit()
 
 except psycopg2.DatabaseError as e:
     print ('Error %s' %e)
