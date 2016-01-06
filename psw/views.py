@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from psw.forms import CommandForm
+from psw.forms import CommandForm, ClientForm
 import paramiko
 
 def index(request):
