@@ -7,6 +7,7 @@ class Commands(models.Model):
     system = models.CharField('System', max_length=50)
     ram = models.IntegerField('Ram')
     quote = models.IntegerField('Quote')
+    wykonana = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Komenda'
