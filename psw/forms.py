@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from django.forms import widgets
-from psw.models import Commands
+from django.forms import widgets, ModelForm
+from psw.models import Commands, Client
 
 
 class CommandForm(forms.ModelForm):
@@ -17,3 +17,13 @@ class CommandForm(forms.ModelForm):
     class Meta:
         model = Commands
         fields = ('ip','system','ram','quote')
+
+class ClientForm(forms.ModelForm):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    userLogin = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    class Meta:
+        model = Client
+        fields = ('first_name','last_name','email','userLogin','password')
