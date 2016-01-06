@@ -21,8 +21,9 @@ def servers(request):
                 ssh.connect('89.206.7.46', username='root', password='TrudneHaslo123')
                 stdin, stdout, stderr = ssh.exec_command('/bin/bash /root/skrypt.sh')
                 ssh.close()
-            except paramiko.ssh_exception.NoValidConnectionsError:
-                return HttpResponseRedirect('/psw')
+            except paramiko.ssh_exception.NoValidConnectionsError as e:
+                print ('Error %s' %e)
+                return HttpResponseRedirect('/psw/servers/')
                       
             return HttpResponseRedirect('/psw')
     else:
