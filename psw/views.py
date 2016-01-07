@@ -18,9 +18,10 @@ def servers(request):
             system = form.cleaned_data['system']
             ram = form.cleaned_data['ram']
             quote = form.cleaned_data['quote']
-            command = 'python3.5 /root/skrypt.py'+ ' '+ ip + ' ' + system + ' ' + ram + ' ' + quote + '  > cos.txt'
-            #call('skrypt.py ' + system, shell=True)
-            print (system)
+            commandlog = 'python3.5 /root/log_skrypt.py'+ ' '+ ip + ' ' + system + ' ' + ram + ' ' + quote + ' >> PSW_log.log'
+
+            command = 'python3.5 /root/main_skrypt.py'+ ' '+ ip + ' ' + system + ' ' + ram + ' ' + quote + '  > wyniki_testy.txt'
+            
             #form.save()
 
 #Tworzenie ze skryptu.py Python 3.5 
@@ -28,6 +29,9 @@ def servers(request):
                 ssh = paramiko.SSHClient()
                 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                 ssh.connect('89.206.7.46', username='root', password='TrudneHaslo123')
+                # Tworzenie Log
+                stdin, stdout, stderr = ssh.exec_command(commandlog)
+                # Tworzenie kontenerow
                 stdin, stdout, stderr = ssh.exec_command(command)
                 ssh.close()
             except paramiko.ssh_exception.NoValidConnectionsError as e:
