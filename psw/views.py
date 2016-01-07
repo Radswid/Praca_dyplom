@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from psw.forms import CommandForm, ClientForm
 import paramiko
 from subprocess import call
+from psw.models import Commands
 
 def index(request):
     context = {'boldmessage': "I am bold font from the context"}
@@ -57,3 +58,9 @@ def register(request):
     else:
          form = ClientForm()
     return render(request, 'psw/register.html', {'form': form})
+
+
+def listservers(request):
+    servers = Commands.objects.all
+    context_dict = {'servers': servers}
+    return render(request, 'psw/listservers.html' , context_dict)

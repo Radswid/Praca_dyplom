@@ -1,0 +1,33 @@
+
+{% extends 'psw/base.html' %}
+
+{% block title %}Moje serwery{% endblock %}
+
+{% block body_block %} 
+
+<div class="hero-unit">
+
+ <h2>Serwery  </h2>
+{% for entry in servers %}
+<table>
+<tr>
+<td> Adres IP : {{ entry.ip }} </td> 
+</tr>
+
+<tr>
+<td> System operacyjny : {{ entry.system }} </td>
+</tr>
+
+<tr>
+<td> Ilość pamięci RAM : {{ entry.ram }} MB </td> 
+</tr>
+
+
+<tr>
+<td> Przestrzeń dyskowa : {{ entry.quote}} GB </td> 
+</tr>
+
+</table>
+</div>
+{% endfor  %}
+{% endblock %}
