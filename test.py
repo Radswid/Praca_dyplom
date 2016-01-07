@@ -1,7 +1,5 @@
 import sys
 
 
-ip = ['198.168.0.10']
-
-
-dxdsddd
+a = sys.argv[1]
+print ('ze skryptu',  a)

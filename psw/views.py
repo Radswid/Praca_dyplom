@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from psw.forms import CommandForm, ClientForm
 import paramiko
+from subprocess import call
 
 def index(request):
     context = {'boldmessage': "I am bold font from the context"}
@@ -13,19 +14,28 @@ def servers(request):
     if request.method == 'POST':
         form = CommandForm(request.POST)
         if form.is_valid():
-            
-            form.save()
+            ip = form.cleaned_data['ip']
+            system = form.cleaned_data['system']
+            ram = form.cleaned_data['ram']
+            quote = form.cleaned_data['quote']
+            command = 'python3.5 /root/skrypt.py'+ ' '+ ip + ' ' + system + ' ' + ram + ' ' + quote + '  > cos.txt'
+            #call('skrypt.py ' + system, shell=True)
+            print (system)
+            #form.save()
+
+#Tworzenie ze skryptu.py Python 3.5 
             try:
                 ssh = paramiko.SSHClient()
                 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                 ssh.connect('89.206.7.46', username='root', password='TrudneHaslo123')
-                stdin, stdout, stderr = ssh.exec_command('/bin/bash /root/skrypt.sh')
+                stdin, stdout, stderr = ssh.exec_command(command)
                 ssh.close()
             except paramiko.ssh_exception.NoValidConnectionsError as e:
                 print ('Error %s' %e)
                 return HttpResponseRedirect('/psw/servers/')
                       
-            return HttpResponseRedirect('/psw')
+            return HttpResponseRedirect('/psw/')
+        
     else:
          form = CommandForm()
          
