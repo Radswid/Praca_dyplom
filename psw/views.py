@@ -33,7 +33,7 @@ def servers(request):
                 # Tworzenie Log
                 stdin, stdout, stderr = ssh.exec_command(commandlog)
                 # Tworzenie kontenerow
-                stdin, stdout, stderr = ssh.exec_command(command)
+                #stdin, stdout, stderr = ssh.exec_command(command)
                 ssh.close()
             except paramiko.ssh_exception.NoValidConnectionsError as e:
                 print ('Error %s' %e)
