@@ -92,18 +92,3 @@ print ('contener boot:',con[2])
 print ('contener host:',con[3])
 
 
-
-'''if system =='Ubuntu':
-    subprocess.run(['vzctl','create'],shell=True,check=True)
-    
-
-        
-else:
-    pass
-
-
-
-
-for arg in sys.argv:
-    print (arg)'''
-
