@@ -3,15 +3,15 @@ import sys
 import subprocess
 from subprocess import PIPE, call
 import time
-'''ip = sys.argv[1]
+ip = sys.argv[1]
 system = sys.argv[2]
 ram = sys.argv[3]
-quote = sys.argv[4]'''
+quote = sys.argv[4]
 
 user = 'ktos'
-system = 'Ubuntu'
+'''system = 'Ubuntu'
 ram = '128'
-quote = '2'
+quote = '2'''
 
 def low_letters(*argsl):
     user = argsl[0].lower() 
