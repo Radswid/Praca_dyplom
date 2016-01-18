@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PSW - {%block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function() {
+			$('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+		});
+	</script>
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+	<div class="conatiner-fluid">
+		{% block nav_block %}
+		<ul class="nav navbar-nav">
+			<li><a href="/psw/">Index</a></li>
+			<li><a href="/psw/servers/">Serwery</a></li>
+			<li><a href="/psw/listservers/">Moje serwery</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/psw/register/"><span class="glyphicon glyphicon-user"></span> Załóż konto</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Zaloguj się</a></li>
+		</ul>
+		{% endblock %}
+	</div>
+</nav>	
+<article class="row">	
+	{% block body_block %}
+	{% endblock %}
+</article>
+<footer>Stworzone przez:GK AZ MP TW</footer>
+</body>
+</html>
