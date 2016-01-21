@@ -1,0 +1,23 @@
+{% extends 'psw/base.html' %}
+
+{% block title %}Rejstracja użytkownika{% endblock %}
+
+{% block body_block %}
+
+<form action="{% url 'login' %}" method="POST" class="col-md-3 col-md-offset-3">
+	{{ form.non_field_errors }}
+	{% csrf_token %}
+<div class="form-group">
+    {{ form.username.errors }}
+    <label for="{{ form.username.id_for_label }}">Użytkownik:</label>
+    {{ form.username }}
+</div>
+<div class="form-group">
+    {{ form.password.errors }}
+    <label for="{{ form.password.id_for_label }}">Hasło:</label>
+    {{ form.password }}
+</div>
+<input type="submit" value="Zaloguj się" class="btn btn-primary"/>
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+{% endblock%}
