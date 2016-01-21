@@ -64,3 +64,18 @@ def listservers(request):
     servers = Commands.objects.all
     context_dict = {'servers': servers}
     return render(request, 'psw/listservers.html' , context_dict)
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request.POST)
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user:
+            login(request, user)
+            return render(request, 'psw/userview.html')
+        else:
+            return render(request, 'psw/login.html', {'form': form})
+    else:
+        form = AuthenticationForm()
+        return render(request, 'psw/login.html', {'form': form})
